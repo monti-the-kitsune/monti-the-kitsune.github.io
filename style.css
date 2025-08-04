@@ -231,10 +231,9 @@ body {
 }
 
 .productImage {
-    max-height: 40vh;
     background: radial-gradient(circle, rgba(190, 0, 0, 0.2) 20%, transparent 70%);
     border-radius: 50%;
-    width: 40vw;
+    width: 25vw;
 }
 
 
@@ -514,6 +513,7 @@ body.light-mode {
 #themeToggle:hover {
     transform: scale(1.2);
 }
+
 
 
 
