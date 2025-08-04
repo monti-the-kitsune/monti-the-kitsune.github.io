@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alternate - Help & Policies</title>
+
+  <!-- Fonts and Styles -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
+  <script src="script.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    // Theme toggle functionality
+    const toggleButton = document.getElementById("themeToggle");
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        body.classList.add("light-mode");
+        toggleButton.textContent = "🌙";
+    }
+
+    toggleButton?.addEventListener("click", () => {
+        const isLight = body.classList.toggle("light-mode");
+        toggleButton.textContent = isLight ? "🌙" : "☀️";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+
+    // Handle form submissions for Add to Cart
+    const forms = document.querySelectorAll("form");
+    forms.forEach(form => {
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            try {
+                const response = await fetch("../cart.php", {
+                    method: "POST",
+                    body: formData
+                });
+                if (!response.ok) {
+                    console.error("Fetch error: HTTP status", response.status, response.statusText);
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+                const result = await response.json();
+                if (result.success) {
+                    alert("Item added to cart!");
+                } else {
+                    console.error("Server error:", result.message);
+                    alert("Error: " + result.message);
+                }
+            } catch (error) {
+                console.error("Fetch or JSON parse error:", error);
+                alert("Error adding item to cart: " + error.message + ". Please check the console for details.");
+            }
+        });
+    });
+});
+</script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="../index.html" class="brandContainer navLink">
+      <img src="../img/icon.png" alt="icon" class="navItem" id="icon">
+      <h2 class="navItem" id="brand">ALTERNATE</h2>
+    </a>
+    <h2 class="navItem"><a href="../pages/gadgets.html" class="navLink">GADGETS</a></h2>
+    <h2 class="navItem"><a href="../pages/others.html" class="navLink">OTHERS</a></h2>
+    <h2 class="navItem"><a href="../cart_view.php" class="navLink">CART</a></h2>
+    <button id="themeToggle" class="navItem">☀️</button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="mainContent">
+    <h1 class="header">HELP & POLICIES</h1>
+
+    <section id="faqs-section" class="infoSection">
+      <h2 class="infoTitle">FAQs</h2>
+      <article class="infoContent">
+        <h1>Q: How do I track my order?</h1>
+        <p class="subtitle">A: You will receive a tracking number via email once your order has been shipped. You can use this number on our carrier's website to monitor your shipment's progress.</p>
+
+        <h1>Q: What payment methods do you accept?</h1>
+        <p class="subtitle">A: We accept all major credit cards, as well as PayPal and other secure payment options.</p>
+
+        <h1>Q: Can I change my order after it has been placed?</h1>
+        <p class="subtitle">A: Unfortunately, we cannot modify an order once it has been placed. Please double-check your items before completing your purchase.</p>
+      </article>
+    </section>
+
+    <section id="shipping-section" class="infoSection">
+      <h2 class="infoTitle">Shipping & Delivery</h2>
+      <article class="infoContent">
+        <p class="subtitle">We offer several shipping options to meet your needs. Standard shipping typically takes 5-7 business days, while express options are available for faster delivery. All orders are processed within 1-2 business days. Please note that delivery times may vary depending on your location and carrier.</p>
+      </article>
+    </section>
+
+    <section id="refund-section" class="infoSection">
+      <h2 class="infoTitle">Refund Policy</h2>
+      <article class="infoContent">
+        <p class="subtitle">Our refund policy allows for returns of unused and undamaged products within 30 days of the purchase date. To initiate a return, please contact our customer support team with your order number. A refund will be processed to your original payment method once the returned item is received and inspected.</p>
+      </article>
+    </section>
+
+    <section id="terms-section" class="infoSection">
+      <h2 class="infoTitle">Terms and Conditions</h2>
+      <article class="infoContent">
+        <p class="subtitle">By using our website, you agree to our terms and conditions. These terms govern your use of the site, our services, and any purchases you make. We reserve the right to update these terms at any time, and we encourage you to review them periodically.</p>
+      </article>
+    </section>
+
+    <section id="privacy-section" class="infoSection">
+      <h2 class="infoTitle">Privacy Policy</h2>
+      <article class="infoContent">
+        <p class="subtitle">We are committed to protecting your privacy. This privacy policy explains how we collect, use, and protect your personal information. We do not sell your data to third parties and take all necessary steps to ensure your information is secure.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="admin.php" class="admin-link">Admin Page</a>
+    <div class="footer">
+      <div class="footerContent">
+        <p class="footerHeader">About us</p>
+        <p class="footerText">Short description about your company or platform goes here.</p>
+      </div>
+      <div class="footerContent">
+        <p class="footerHeader">Contact Us</p>
+        <p class="footerText">Email: example@example.com</p>
+      </div>
+      <div class="footerContent">
+        <p class="footerHeader">Follow Us</p>
+        <p class="footerText">Links to social media or other platforms.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
