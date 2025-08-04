@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+
+    <script src="app.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="brandContainer navLink">
+            <img src="img/icon.png" alt="icon" class="navItem" id="icon">
+            <h2 class="navItem" id="brand">ALTERNATE</h2>
+        </a>
+        <h2 class="navItem"><a href="" class="navLink">HARDWARE</a></h2>
+        <h2 class="navItem"><a href="pages/gadgets.html" class="navLink">GADGETS</a></h2>
+        <h2 class="navItem"><a href="" class="navLink">OTHERS</a></h2>
+        <button id="themeToggle" class="navItem">☀️</button>
+    </nav>
+    <div class="mainContent" id="home">
+        <h1 class="title">
+            LIFE IS NOT SIMPLE
+        </h1>
+        <p class="subtitle">
+            Life may be hard for us, but here, we will grant you an alternate life, filled with electronics. Making purchases to simplify this complicated life. We have the ability to grant you a better alternate with every electronics, high-quality, durable, affordable and stylish.
+        </p>
+    </div>
+
+    <div class="mainContent" id="wrapper">
+        <div class="wrapper">
+            <h1 class="header">
+                DISCOVER GEAR FOR GAMERS. BY GAMERS.
+            </h1>
+            <p class="subtitle">
+                Peripherals from the world's leading brands, including Razer, Logitech, Corsair, and more. Whether you're a casual gamer or a hardcore enthusiast, we have the gear you need to take your gaming experience to the next level.
+            </p>
+        </div>
+    </div>   
+
+    <div class="mainContent">
+        <h1 class="header">
+                PRODUCTS
+            </h1>
+        <div class="products">
+            <div class="productElement">
+                <img src="img/Razer_DeathAdder_Essential_Wired_Optical_Gaming_Mouse_for_PC_5_Buttons.png" alt="" class="productImage">
+                <h2 class="productTitle">
+                    Razer Deathadder
+                </h2>
+                <p class="productDescription">
+                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a  true 6,400 DPI optical sensor  for fast and precise swipes, an ergonomic form for comfortable gaming, and  5 programmable buttons with macro functions 
+                </p>
+                <div class="productInformation">
+                    <p class="productPrice">Price: $49.99</p>
+                    <form method="post" action="cart.php">
+                        <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
+                        <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
+                        <input type="submit" value="Add to Cart" class="buyButton">
+                    </form>
+                </div>
+            </div>
+            <div class="productElement">
+                <img src="" alt="" class="productImage">
+                <h2 class="productTitle">
+                    Gaming Mouse
+                </h2>
+                <p class="productDescription">
+                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                </p>
+                <div class="productInformation">
+                    <p class="productPrice">Price: $49.99</p>
+                    <button class="buyButton">Buy Now</button>
+                </div>
+            </div>
+            <div class="productElement">
+                <img src="" alt="" class="productImage">
+                <h2 class="productTitle">
+                    Gaming Mouse
+                </h2>
+                <p class="productDescription">
+                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                </p>
+                <div class="productInformation">
+                    <p class="productPrice">Price: $49.99</p>
+                    <button class="buyButton">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainContent">
+        <h1 class="header">
+            SAMPLE TEXT
+        </h1>
+        <p class="subtitle">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 YourSiteName</p>
+        <a href="admin.php" class="admin-link">Admin Page</a>
+        <div class="footer">
+            <div class="footerContent">
+                <p class="footerHeader">About us</p>
+                <p class="footerText"> ahgsfdcaysdv ufj ahbsdfvuagsdfbf asduf uhasdgfyut asdf ad
+            </div>
+            <div class="footerContent">
+                <p class="footerHeader">Contact Us</p>
+                <p class="footerText">Email:
+            </div>
+            <div class="footerContent">
+                <p class="footerHeader">Contact Us</p>
+                <p class="footerText">Email:
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script> 
+</body>
+
+
+
+</html>
