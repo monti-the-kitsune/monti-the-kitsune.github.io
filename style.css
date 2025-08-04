@@ -15,24 +15,31 @@ body {
 }
 
 .navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.5em;
-  background-color: var(--nav-bg);
-  border-bottom: 2px solid var(--nav-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5em;
+    background-color: var(--nav-bg);
+    border-bottom: 2px solid var(--nav-border);
+    color: var(--nav-text);
 }
 
 .brandContainer {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  margin-right: auto;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-right: auto;
+    text-decoration: none; 
+    color: inherit; 
 }
 
 .brandContainer:hover {
-  color: var(--highlight-color);
+    color: var(--hover-color);
+    cursor: pointer;
+}
+
+.brandContainer img {
+  pointer-events: none;
 }
 
 .navItem {
@@ -322,6 +329,45 @@ body {
 @keyframes blink {
     50% { opacity: 0; }
 }
+
+.infoSection {
+  margin: 2em auto;
+  padding: 2em;
+  max-width: 800px;
+  border-radius: 12px;
+  border: 1px solid var(--product-border);
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.infoTitle {
+  font-size: 2rem;
+  font-family: 'Inconsolata', monospace;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.infoContent {
+  font-family: 'Lato', sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.infoContent h3 {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #111;
+}
+
+.infoContent p.subtitle {
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
 
 /* Toast Notification */
 .toast {
