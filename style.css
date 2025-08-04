@@ -1,6 +1,6 @@
 /* Theme variables */
 :root {
-    --bg-color: #1a1a1a;
+    --bg-color: #000000;
     --text-color: #fff;
     --nav-bg: #000;
     --nav-text: #fff;
@@ -445,3 +445,4 @@ body {
     }
 
 }
+
