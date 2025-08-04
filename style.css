@@ -15,50 +15,48 @@ body {
 }
 
 .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.5em;
-    background-color: var(--nav-bg);
-    border-bottom: 2px solid var(--nav-border);
-    color: var(--nav-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.5em;
+  background-color: var(--nav-bg);
+  border-bottom: 2px solid var(--nav-border);
 }
 
 .brandContainer {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    margin-right: auto;
-    text-decoration: none; 
-    color: inherit; 
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-right: auto;
+  text-decoration: none;
 }
 
 .brandContainer:hover {
-    color: var(--hover-color);
-    cursor: pointer;
-}
-
-.brandContainer img {
-    pointer-events: none; 
+  color: var(--highlight-color);
 }
 
 .navItem {
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 5px;
-    font-family: "Lato", sans-serif;
-    font-size: 2em;
-    transition: color 0.2s;
-    color: var(--nav-text);
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 5px;
+  font-family: "Lato", sans-serif;
+  font-size: 2em;
+  transition: color 0.2s;
+}
+
+
+.navLink {
+  text-decoration: none; /* Remove underline */
+  color: var(--nav-text); /* Apply the defined nav text color */
 }
 
 .navLink:visited {
-    color: var(--nav-text);
+  color: var(--nav-text);
 }
 
 .navLink:hover {
-    color: var(--highlight-color);
-    text-shadow: 0 0 1px var(--highlight-color);
+  color: var(--highlight-color);
+  text-shadow: 0 0 1px var(--highlight-color);
 }
 
 .itemNavbar {
@@ -84,11 +82,13 @@ body {
 }
 
 .itemNavLink:visited {
-    color: var(--item-nav-visited);
+    transition: color 0.2s;
+    color: var(--item-nav-text);
 }
 
 .itemNavLink:hover {
     color: var(--item-nav-hover);
+    transition: color 0.2s;
     text-shadow: var(--item-nav-hover-shadow);
 }
 
@@ -97,15 +97,16 @@ body {
     height: 2.5em;
 }
 
-#brand{
-    font-size: 2.5em;
+#brand {
+  font-size: 2.5em;
 }
 
 .navItem:hover:not(#brand, #icon) {
-    cursor: pointer;
-    color: var(--nav-hover-color);
-    text-decoration: underline;
+  cursor: pointer;
+  color: var(--highlight-color);
+  text-decoration: none;
 }
+
 
 .mainContent {
     font-family: "Inconsolata", monospace;
@@ -314,6 +315,10 @@ body {
     display: none;
 }
 
+#small{
+    font-size: 1.2em;
+}
+
 @keyframes blink {
     50% { opacity: 0; }
 }
@@ -399,12 +404,12 @@ body.light-mode {
 }
 
 #themeToggle {
-    background: none;
-    border: none;
-    font-size: 2em;
-    cursor: pointer;
-    color: var(--text-color);
-    transition: transform 0.2s ease;
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: var(--nav-text);
+  transition: transform 0.2s ease;
 }
 
 #themeToggle:hover {
