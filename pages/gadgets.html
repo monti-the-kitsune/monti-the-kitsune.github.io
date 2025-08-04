@@ -6,105 +6,46 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inconsolata:wght@200..900&family=Lato:wght@100;300;400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     <title>Gadgets - ALTERNATE</title>
 </head>
-<script src="../app.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    // Theme toggle functionality
-    const toggleButton = document.getElementById("themeToggle");
-    const body = document.body;
-
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-        body.classList.add("light-mode");
-        toggleButton.textContent = "🌙";
-    }
-
-    toggleButton?.addEventListener("click", () => {
-        const isLight = body.classList.toggle("light-mode");
-        toggleButton.textContent = isLight ? "🌙" : "☀️";
-        localStorage.setItem("theme", isLight ? "light" : "dark");
-    });
-
-    // Handle form submissions for Add to Cart
-    const forms = document.querySelectorAll("form");
-    forms.forEach(form => {
-        form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            const formData = new FormData(form);
-            try {
-                const response = await fetch("../cart.php", {
-                    method: "POST",
-                    body: formData
-                });
-                if (!response.ok) {
-                    console.error("Fetch error: HTTP status", response.status, response.statusText);
-                    throw new Error(`HTTP error: ${response.status}`);
-                }
-                const result = await response.json();
-                if (result.success) {
-                    alert("Item added to cart!");
-                } else {
-                    console.error("Server error:", result.message);
-                    alert("Error: " + result.message);
-                }
-            } catch (error) {
-                console.error("Fetch or JSON parse error:", error);
-                alert("Error adding item to cart: " + error.message + ". Please check the console for details.");
-            }
-        });
-    });
-});
-</script>
 <body>
     <nav class="navbar">
         <a href="../index.html" class="brandContainer navLink">
-          <img src="../img/icon.png" alt="icon" class="navItem" id="icon">
+            <img src="../img/icon.png" alt="icon" class="navItem" id="icon">
             <h2 class="navItem" id="brand">ALTERNATE</h2>
         </a>
         <h2 class="navItem"><a href="../pages/gadgets.html" class="navLink">GADGETS</a></h2>
         <h2 class="navItem"><a href="../pages/others.html" class="navLink">OTHERS</a></h2>
         <h2 class="navItem"><a href="../cart_view.php" class="navLink">CART</a></h2>
+        <h2 class="navItem"><a href="../admin.php" class="navLink">ADMIN</a></h2>
         <button id="themeToggle" class="navItem">☀️</button>
-        
     </nav>
 
-    <div class="mainContent" id="hardware">
-        <h1 class="title2">
-            PERIPEHERALS
-        </h1>
+    <div class="mainContent" id="peripherals">
+        <h1 class="title2">PERIPHERALS</h1>
         <p class="subtitle2">
             Discover gear for gamers, by gamers. Peripherals from the world's leading brands, including Razer, Logitech, Corsair, and more. Whether you're a casual gamer or a hardcore enthusiast, we have the gear you need to take your gaming experience to the next level.
         </p>
     </div>
 
     <div class="itemNavbar">
-        <h2 class="itemNavItem"><a href="" class="itemNavLink">KEYBOARDS</a></h2>
-        <h2 class="itemNavItem"><a href="" class="itemNavLink">MICE</a></h2>
-        <h2 class="itemNavItem"><a href="" class="itemNavLink">MONITORS</a></h2>
-        <h2 class="itemNavItem"><a href="" class="itemNavLink">HEADPHONES</a></h2>
+        <h2 class="itemNavItem"><a href="#keyboards" class="itemNavLink">KEYBOARDS</a></h2>
+        <h2 class="itemNavItem"><a href="#mice" class="itemNavLink">MICE</a></h2>
+        <h2 class="itemNavItem"><a href="#headsets" class="itemNavLink">HEADSETS</a></h2>
     </div>
 
     <div class="mainContent">
-        <h1 class="title2" id="keyboards">
-            KEYBOARDS
-        </h1>
+        <h1 class="title2" id="keyboards">KEYBOARDS</h1>
         <div class="products">
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Razer Deathadder
-                </h2>
+                <img src="../img/Keyboard/blackwidow-v3-tenkeyless-usp1-mobile-v2-removebg-preview.png" alt="Razer BlackWidow" class="productImage">
+                <h2 class="productTitle">Razer BlackWidow</h2>
                 <p class="productDescription">
-                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a true 6,400 DPI optical sensor for fast and precise swipes, an ergonomic form for comfortable gaming, and 5 programmable buttons with macro functions 
+                    The Razer BlackWidow Mechanical Gaming Keyboard features tactile green switches, customizable RGB lighting, and programmable macros for an immersive gaming experience.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $99.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="2">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -113,15 +54,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Keyboard/pro-clicky-gallery-1.png" alt="Logitech G Pro" class="productImage">
+                <h2 class="productTitle">Logitech G Pro</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    Compact and durable, the Logitech G Pro Keyboard offers fast-actuating mechanical switches and customizable lighting, designed for esports professionals.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $129.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="3">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -130,15 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Keyboard/CorsairK70RGBMK.2MechanicalGamingKeyboard-removebg-preview.png" alt="Corsair K70" class="productImage">
+                <h2 class="productTitle">Corsair K70</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The Corsair K70 RGB MK.2 features Cherry MX switches, per-key RGB lighting, and a durable aluminum frame for precision and style.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $149.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="4">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -149,15 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="products">
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Razer Deathadder
-                </h2>
+                <img src="../img/Keyboard/www.ubuy.com-removebg-preview.png" alt="SteelSeries Apex" class="productImage">
+                <h2 class="productTitle">SteelSeries Apex</h2>
                 <p class="productDescription">
-                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a true 6,400 DPI optical sensor for fast and precise swipes, an ergonomic form for comfortable gaming, and 5 programmable buttons with macro functions 
+                    The SteelSeries Apex Pro features adjustable mechanical switches, OLED smart display, and dynamic RGB lighting for ultimate customization.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $199.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="5">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -166,15 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Keyboard/1RUQIEKG1655873808-1361x711-removebg-preview.png" alt="HyperX Alloy" class="productImage">
+                <h2 class="productTitle">HyperX Alloy</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The HyperX Alloy Origins offers responsive mechanical switches, compact design, and vibrant RGB lighting for gamers seeking performance.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $109.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="6">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -183,15 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Keyboard/13591_63dac2f683383_One-3-Mini-Classic-removebg-preview.png" alt="Ducky One 3" class="productImage">
+                <h2 class="productTitle">Ducky One 3</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The Ducky One 3 features premium Cherry MX switches, PBT keycaps, and customizable RGB lighting for a high-quality typing experience.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $139.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="7">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -201,17 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
 
-        <h1 class="title2" id="mice">
-            MICE
-        </h1>
+        <h1 class="title2" id="mice">MICE</h1>
         <div class="products">
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Razer Deathadder
-                </h2>
+                <img src="../img/Razer_DeathAdder_Essential_Wired_Optical_Gaming_Mouse_for_PC_5_Buttons.png" alt="Razer DeathAdder" class="productImage">
+                <h2 class="productTitle">Razer DeathAdder</h2>
                 <p class="productDescription">
-                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a true 6,400 DPI optical sensor for fast and precise swipes, an ergonomic form for comfortable gaming, and 5 programmable buttons with macro functions 
+                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a true 6,400 DPI optical sensor for fast and precise swipes, an ergonomic form for comfortable gaming, and 5 programmable buttons with macro functions.
                 </p>
                 <div class="productInformation">
                     <p class="productPrice">Price: $49.99</p>
@@ -223,15 +150,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Mouse/Logitech_G502_HERO_Wired_822a88cb-a1ca-46ea-8f62-c7a3abe077d0_530x_2x-removebg-preview.png" alt="Logitech G502" class="productImage">
+                <h2 class="productTitle">Logitech G502</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The Logitech G502 HERO features a 25,600 DPI sensor, 11 programmable buttons, and adjustable weights for precision and comfort.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $79.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="9">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -240,15 +165,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Mouse/Untitled-5-1-800x800-removebg-preview.png" alt="Corsair Dark Core" class="productImage">
+                <h2 class="productTitle">Corsair Dark Core</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The Corsair Dark Core RGB features a 16,000 DPI sensor, wireless connectivity, and customizable RGB lighting for versatile gaming.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $89.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="10">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -259,15 +182,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="products">
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Razer Deathadder
-                </h2>
+                <img src="../img/Mouse/20_ed685340-22e0-49a2-ad34-a14a7f4252ce-removebg-preview.png" alt="SteelSeries Rival" class="productImage">
+                <h2 class="productTitle">SteelSeries Rival</h2>
                 <p class="productDescription">
-                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a true 6,400 DPI optical sensor for fast and precise swipes, an ergonomic form for comfortable gaming, and 5 programmable buttons with macro functions 
+                    The SteelSeries Rival 600 features a dual-sensor system, 12,000 DPI, and customizable weight for precise control.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $79.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="11">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -276,15 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Mouse/hyperx_pulsefire_surge_1_main-removebg-preview.png" alt="HyperX Pulsefire" class="productImage">
+                <h2 class="productTitle">HyperX Pulsefire</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The HyperX Pulsefire Surge offers a 16,000 DPI sensor, RGB lighting, and ergonomic design for competitive gaming.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $59.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="12">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -293,15 +212,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Mouse/__8886419332831-removebg-preview.png" alt="Razer Basilisk" class="productImage">
+                <h2 class="productTitle">Razer Basilisk</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The Razer Basilisk V3 features a 26,000 DPI sensor, customizable scroll wheel, and 11 programmable buttons for ultimate control.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $69.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="13">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -311,20 +228,16 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
 
-        <h1 class="title2" id="headsets">
-            HEADSETS
-        </h1>
+        <h1 class="title2" id="headsets">HEADSETS</h1>
         <div class="products">
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Razer Deathadder
-                </h2>
+                <img src="../img/Headsets/__8886419378570-removebg-preview.png" alt="Razer Kraken" class="productImage">
+                <h2 class="productTitle">Razer Kraken</h2>
                 <p class="productDescription">
-                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a true 6,400 DPI optical sensor for fast and precise swipes, an ergonomic form for comfortable gaming, and 5 programmable buttons with macro functions 
+                    The Razer Kraken Ultimate features THX Spatial Audio, a noise-canceling mic, and cooling gel ear cushions for immersive gaming.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $129.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="14">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -333,15 +246,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Headsets/4_cf7047c1-bb60-4bc4-8198-147418dced24-removebg-preview.png" alt="Logitech G Pro X" class="productImage">
+                <h2 class="productTitle">Logitech G Pro X</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The Logitech G Pro X offers Blue VO!CE mic technology, DTS Headphone:X 2.0, and memory foam earpads for professional-grade audio.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $129.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="15">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -350,15 +261,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Headsets/639b659665154c75afa320479ac4c8c0-removebg-preview.png" alt="Corsair Void" class="productImage">
+                <h2 class="productTitle">Corsair Void</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The Corsair Void RGB Elite Wireless features 7.1 surround sound, a low-latency wireless connection, and breathable microfiber mesh.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $99.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="16">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -369,15 +278,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="products">
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Razer Deathadder
-                </h2>
+                <img src="../img/Headsets/1_35637f36-231a-44c9-8e8e-4efd84e5a534-removebg-preview (1).png" alt="SteelSeries Arctis" class="productImage">
+                <h2 class="productTitle">SteelSeries Arctis</h2>
                 <p class="productDescription">
-                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a true 6,400 DPI optical sensor for fast and precise swipes, an ergonomic form for comfortable gaming, and 5 programmable buttons with macro functions 
+                    The SteelSeries Arctis 7 features lossless wireless audio, a ClearCast mic, and AirWeave ear cushions for all-day comfort.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $149.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="17">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -386,15 +293,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Headsets/HyperX-Cloud-II-Gaming-Headset_c8f9b99e-5848-4d23-b260-8e70fae00d0d.2b03fe7f1ea05e90d351a3412d7eb94c-removebg-preview.png" alt="HyperX Cloud" class="productImage">
+                <h2 class="productTitle">HyperX Cloud</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The HyperX Cloud Alpha offers dual-chamber drivers, a detachable noise-canceling mic, and durable aluminum frame for superior audio.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $99.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="18">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -403,15 +308,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
+                <img src="../img/Headsets/slide21_8_1-removebg-preview (1).png" alt="Sennheiser GSP" class="productImage">
+                <h2 class="productTitle">Sennheiser GSP</h2>
                 <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
+                    The Sennheiser GSP 600 features noise-canceling audio, an adjustable headband, and a broadcast-quality mic for professional gaming.
                 </p>
                 <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
+                    <p class="productPrice">Price: $149.99</p>
                     <form method="post" action="../cart.php">
                         <input type="hidden" name="product_id" value="19">
                         <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
@@ -422,21 +325,17 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <footer>
-        <div class="footer">
-            <div class="footerContent">
-                <p class="footerHeader">About us</p>
-                <p class="footerText"> ahgsfdcaysdv ufj ahbsdfvuagsdfbf asduf uhasdgfyut asdf ad
-            </div>
-            <div class="footerContent">
-                <p class="footerHeader">Contact Us</p>
-                <p class="footerText">Email:
-            </div>
-            <div class="footerContent">
-                <p class="footerHeader">Contact Us</p>
-                <p class="footerText">Email:
-            </div>
+    <footer class="footer">
+        <p>&copy; 2025 ALTERNATE</p>
+        <div class="footerContent">
+            <p class="footerHeader">About Us</p>
+            <p class="footerText">Your trusted source for high-quality gaming peripherals and electronics.</p>
         </div>
-    </footer> 
+        <div class="footerContent">
+            <p class="footerHeader">Contact Us</p>
+            <p class="footerText">Email: support@alternate.com</p>
+        </div>
+    </footer>
+    <script src="../app.js"></script>
 </body>
 </html>
