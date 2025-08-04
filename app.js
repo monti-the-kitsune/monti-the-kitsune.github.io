@@ -79,3 +79,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000);
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const productElements = document.querySelectorAll('.productElement');
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  productElements.forEach(el => {
+    observer.observe(el);
+  });
+});
