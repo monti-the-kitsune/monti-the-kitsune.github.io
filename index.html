@@ -48,61 +48,64 @@
 
     <div class="mainContent">
         <h1 class="header">
-                PRODUCTS
+                FEATURED PRODUCTS
             </h1>
-        <div class="products">
-            <div class="productElement">
-                <img src="img/Razer_DeathAdder_Essential_Wired_Optical_Gaming_Mouse_for_PC_5_Buttons.png" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Razer Deathadder
-                </h2>
-                <p class="productDescription">
-                    The Razer DeathAdder Essential Wired Optical Gaming Mouse features a  true 6,400 DPI optical sensor  for fast and precise swipes, an ergonomic form for comfortable gaming, and  5 programmable buttons with macro functions 
-                </p>
-                <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
-                    <form method="post" action="cart.php">
-                        <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
-                        <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
-                        <input type="submit" value="Add to Cart" class="buyButton">
-                    </form>
-                </div>
-            </div>
-            <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
-                <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
-                </p>
-                <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
-                    <form method="post" action="cart.php">
-                        <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
-                        <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
-                        <input type="submit" value="Add to Cart" class="buyButton">
-                    </form>
-                </div>
-            </div>
-            <div class="productElement">
-                <img src="" alt="" class="productImage">
-                <h2 class="productTitle">
-                    Gaming Mouse
-                </h2>
-                <p class="productDescription">
-                    Experience precision and speed with our top-rated gaming mouse. Designed for gamers, it features customizable buttons, adjustable DPI settings, and ergonomic design for long gaming sessions.
-                </p>
-                <div class="productInformation">
-                    <p class="productPrice">Price: $49.99</p>
-                    <form method="post" action="cart.php">
-                        <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
-                        <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
-                        <input type="submit" value="Add to Cart" class="buyButton">
-                    </form> 
+        <div class="featuredProductWrapper">
+            <div class="featuredProduct">
+                <div class="product" id="product1">
+                    <img src="./img/razerdeathadder.png" class="productImage" alt="">
+                    <div class="productInformation"> 
+                    <h2 class="productName">Razer DeathAdder</h2>
+                    <p class="productDescription">The Razer DeathAdder is a high-precision gaming mouse designed for comfort and performance.</p>    
+                    
+                    <div class="productInformation">
+                        <p class="productPrice">Price: $49.99</p>
+                        <form method="post" action="cart.php">
+                            <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
+                            <input type="submit" value="Add to Cart" class="buyButton">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="featuredProductWrapper">
+            <div class="featuredProduct">
+                <div class="product" id="product1">
+                    <img src="./img/hyperxalloy.png" class="productImage" alt="">
+                    <div class="productInformation"> 
+                    <h2 class="productName">HyperX Alloy</h2>
+                    <p class="productDescription">The HyperX Alloy is a high-performance gaming keyboard designed for durability and precision.</p>    
+
+                    <div class="productInformation">
+                        <p class="productPrice">Price: $399.99</p>
+                        <form method="post" action="cart.php">
+                            <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
+                            <input type="submit" value="Add to Cart" class="buyButton">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="featuredProductWrapper">
+            <div class="featuredProduct">
+                <div class="product" id="product1">
+                    <img src="./img/razerkraken.png" class="productImage" alt="">
+                    <div class="productInformation"> 
+                    <h2 class="productName">Razer Kraken</h2>
+                    <p class="productDescription">The Razer Kraken is a high-quality gaming headset designed for immersive sound and comfort.</p>    
+
+                    <div class="productInformation">
+                        <p class="productPrice">Price: $440.99</p>
+                        <form method="post" action="cart.php">
+                            <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
+                            <input type="submit" value="Add to Cart" class="buyButton">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
     </div>
 
     <div class="mainContent">
