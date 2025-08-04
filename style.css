@@ -209,6 +209,57 @@ body {
     font-family: "Inconsolata", monospace;
 }
 
+.featuredProductWrapper{
+    border-top: 2px solid var(--product-border);
+    border-bottom: 2px solid var(--product-border);
+}
+
+.featuredProduct {
+    display: flex;         /* Allow multiple products in a row */
+    justify-content: left;
+    align-items: left;
+    gap: 10px;              /* space between products */
+    flex-wrap: wrap;        /* allow wrapping if needed */
+}
+
+.product {
+    display: flex;          /* Lay out children (img, name, desc) horizontally */
+    align-items: center;             /* space between elements inside the product */
+    margin-left: 10vw; /* Adjust as needed */
+    margin-right: 10vw; /* Adjust as needed */;
+    margin-top: 10vh;
+    margin-bottom: 10vh; /* Adjust as needed */
+}
+
+.productImage {
+    height: 40vh;           /* Adjust size as needed */
+    background: radial-gradient(circle, rgba(190, 0, 0, 0.2) 20%, transparent 70%);
+    border-radius: 50%;
+    max-width: 40vw;
+}
+
+.productInformation {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
+    margin-left: 20px; /* Adjust as needed */
+    margin-right: 20px; /* Adjust as needed */
+}
+
+.productName {
+    font-size: 3.5em;
+    font-family: "Inconsolata", monospace;
+    margin: 0;
+}
+
+.productDescription {
+    font-size: 1.5em;
+    font-family: "Inconsolata", monospace;
+    color: var(--text-color);
+    margin: 0;
+}
+
 .admin-btn {
   color: var(--button-text);
   background-color: var(--button-bg);
@@ -279,14 +330,6 @@ body {
 .productElement.in-view {
   opacity: 1;
   transform: translateY(0);
-}
-
-.productImage {
-    width: 20vw;
-    height: 20vw;
-    border-radius: 10px;
-    box-shadow: var(--product-img-shadow);
-    transition: transform 0.3s ease;
 }
 
 .buyButton {
@@ -427,7 +470,7 @@ body {
     --footer-text: #fff;
     --footer-border: #be0000;
     --hover-color: rgba(255, 255, 255, 0.7);
-    --product-img-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    --product-img-shadow: 0px 0px 10px #be0000;
     --home-background-image: url("/img/background2.jpg");
     --product-border: #be0000; /* Add this line */
     --product-shadow: 0 2px 8px rgba(190, 0, 0, 0.2); /* Example shadow */
