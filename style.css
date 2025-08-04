@@ -270,6 +270,17 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.productElement {
+  opacity: 0;
+  transform: translateY(10em);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.productElement.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .productImage {
     width: 20vw;
     height: 20vw;
