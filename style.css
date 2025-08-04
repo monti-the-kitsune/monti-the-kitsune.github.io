@@ -322,8 +322,6 @@ body {
 
 .productElement {
   opacity: 1;
-  transform: translateY(10em);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .buyButton {
@@ -519,4 +517,5 @@ body.light-mode {
 #themeToggle:hover {
     transform: scale(1.2);
 }
+
 
