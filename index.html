@@ -78,7 +78,11 @@
                 </p>
                 <div class="productInformation">
                     <p class="productPrice">Price: $49.99</p>
-                    <button class="buyButton">Buy Now</button>
+                    <form method="post" action="cart.php">
+                        <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
+                        <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
+                        <input type="submit" value="Add to Cart" class="buyButton">
+                    </form>
                 </div>
             </div>
             <div class="productElement">
@@ -91,7 +95,11 @@
                 </p>
                 <div class="productInformation">
                     <p class="productPrice">Price: $49.99</p>
-                    <button class="buyButton">Buy Now</button>
+                    <form method="post" action="cart.php">
+                        <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with actual product ID -->
+                        <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
+                        <input type="submit" value="Add to Cart" class="buyButton">
+                    </form> 
                 </div>
             </div>
         </div>
@@ -99,10 +107,10 @@
 
     <div class="mainContent">
         <h1 class="header">
-            SAMPLE TEXT
+            ABOUT US
         </h1>
         <p class="subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Alternate is made by a trio of teenagers, "Ctrl + Alt + Delete". The web is inspired by Razer™, the world’s leading lifestyle brand made For Gamers. By Gamers. The people make this website possible are TanTingWei, ChooYi, NgWeiJian. These young fellows wish to contribute the society by providing reasonable price for stylish gaming accessories in Malaysia. We want to build a site where everyone trusts and supports.
         </p>
     </div>
 
