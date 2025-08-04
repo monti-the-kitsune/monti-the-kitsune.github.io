@@ -211,7 +211,6 @@ body {
 
 .featuredProductWrapper{
     border-top: 2px solid var(--product-border);
-    border-bottom: 2px solid var(--product-border);
 }
 
 .featuredProduct {
@@ -515,3 +514,4 @@ body.light-mode {
 #themeToggle:hover {
     transform: scale(1.2);
 }
+
