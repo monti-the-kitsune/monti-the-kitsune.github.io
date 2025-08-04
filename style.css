@@ -342,6 +342,8 @@ body {
     --hover-color: rgba(255, 255, 255, 0.7);
     --product-img-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     --home-background-image: url("/img/background2.jpg");
+    --product-border: #be0000; /* Add this line */
+    --product-shadow: 0 2px 8px rgba(190, 0, 0, 0.2); /* Example shadow */
 }
 
 body.light-mode {
@@ -363,6 +365,8 @@ body.light-mode {
     --hover-color: #999;
     --product-img-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     --home-background-image: url("");
+    --product-border: #ff5a5a; /* Add this line */
+    --product-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Example light shadow */
 }
 
 #themeToggle {
