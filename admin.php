@@ -2,7 +2,7 @@
 session_start();
 include 'data.php';
 $products_result = $conn->query("SELECT id, name, price, stock FROM products");
-$orders_result = $conn->query("SELECT o.id, o.user_session_id, o.product_id, o.quantity, o.order_date, p.name, p.price FROM orders o JOIN products p ON o.product_id = p.id ORDER BY o.order_date DESC");
+$orders_result = $conn->query("SELECT o.id, o.user_session_id, o.product_id, o.quantity, o.order_date, p.name, p.price FROM orders o JOIN products p ON o.product_id = p.id ORDER BY o.order_date ASC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,11 +25,10 @@ $orders_result = $conn->query("SELECT o.id, o.user_session_id, o.product_id, o.q
         <h2 class="navItem"><a href="pages/gadgets.html" class="navLink">GADGETS</a></h2>
         <h2 class="navItem"><a href="cart_view.php" class="navLink">CART</a></h2>
         <h2 class="navItem"><a href="admin.php" class="navLink">ADMIN</a></h2>
-        <button id="themeToggle" class="navItem">☀️</button>
     </nav>
 
     <div class="mainContent">
-        <h1 class="title2">Admin - Product Stock</h1>
+        <h1 class="title2">Product Stock</h1>
         <div class="products">
             <?php if ($products_result->num_rows > 0): ?>
                 <table class="adminTable">
@@ -83,23 +82,6 @@ $orders_result = $conn->query("SELECT o.id, o.user_session_id, o.product_id, o.q
             <?php endif; ?>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const toggleButton = document.getElementById("themeToggle");
-            const body = document.body;
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "light") {
-                body.classList.add("light-mode");
-                toggleButton.textContent = "🌙";
-            }
-            toggleButton?.addEventListener("click", () => {
-                const isLight = body.classList.toggle("light-mode");
-                toggleButton.textContent = isLight ? "🌙" : "☀️";
-                localStorage.setItem("theme", isLight ? "light" : "dark");
-            });
-        });
-    </script>
 </body>
 </html>
 <?php

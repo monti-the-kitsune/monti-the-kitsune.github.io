@@ -1,85 +1,69 @@
+/* Body */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #121212;
-  margin: 20px;
-  padding: 0;
-  color: #e0e0e0;
-}
-
-h1 {
-  text-align: center;
-  color: #ffffff;
-  margin-bottom: 30px;
-}
-
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.product {
-  background: #1e1e1e;
-  border: 1px solid #2c2c2c;
-  border-radius: 12px;
-  padding: 20px;
-  width: 250px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.product:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.05);
-}
-
-.product img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  border: 1px solid #333;
-}
-
-.product h3 {
-  margin-top: 0;
-  color: #ffffff;
-}
-
-.product p {
-  margin: 8px 0;
-  font-size: 14px;
-  color: #cccccc;
-}
-
-strong {
-  color: #ff4081;
-  font-weight: 600;
+    font-family: 'Lato', sans-serif;
+    background-color: #1a1a1a; /* Dark background for dark mode */
+    margin: 0; /* Full-screen width */
+    padding: 0;
+    color: #fff; /* White text baseline */
 }
 
 /* Admin Table */
 .adminTable {
-    width: 100%;
+    width: 90%; /* Constrain width for readability */
+    max-width: 1200px; /* Prevent overly wide tables */
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 10px auto; /* Center horizontally */
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 }
 .adminTable th, .adminTable td {
-    border: 1px solid #ccc; /* Adjust to match your admin.css theme */
-    padding: 10px;
+    border: 1px solid #444; /* Slightly lighter border for dark mode */
+    padding: 8px;
     text-align: left;
 }
 .adminTable th {
-    background-color: #4a4a4a; /* Dark background, adjust to match admin.css */
-    color: #fff; /* White text, adjust if needed */
+    background-color: #2ecc71; /* Green header to match checkoutButton */
+    color: #fff; /* White text */
+    font-weight: 700;
 }
 .adminTable td {
-    background-color: #fff; /* Light background for rows */
+    background-color: #2a2a2a; /* Darker row background */
+    color: #fff !important; /* White text for readability */
 }
-.light-mode .adminTable th {
-    background-color: #2ecc71; /* Green for light mode, matches checkoutButton */
+.adminTable tr {
+    transition: transform 0.3s ease; /* Smooth animation */
 }
-.light-mode .adminTable td {
-    background-color: #f9f9f9; /* Slightly off-white for light mode */
+.adminTable tr:hover {
+    transform: scale(1.02); /* Slightly larger on hover */
+}
+
+/* Titles */
+h1.title2 {
+    margin: 10px 0;
+    color: #fff; /* White text */
+    font-family: 'Inconsolata', monospace;
+    font-size: 3em;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+/* Products container */
+.products {
+    display: block;
+    width: 100%;
+    padding: 0; /* No side padding for full width */
+}
+
+/* Subtitle */
+.subtitle2 {
+    display: flex;
+    font-size: 1.25em;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    text-align: center;
+    font-family: 'Inconsolata', monospace;
+    color: #fff !important; /* White text */
 }

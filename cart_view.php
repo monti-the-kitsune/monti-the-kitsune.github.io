@@ -1,9 +1,22 @@
 <?php
 session_start();
-include 'data.php';
+require_once 'data.php';
 $session_id = session_id();
+
+// Fetch cart items
+$cart_items = [];
+$total_price = 0;
 $result = $conn->query("SELECT c.id, c.product_id, c.quantity, p.name, p.price, p.image_url FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_session_id = '$session_id'");
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $row['subtotal'] = $row['price'] * $row['quantity'];
+        $cart_items[] = $row;
+        $total_price += $row['subtotal'];
+    }
+}
+$conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,121 +34,51 @@ $result = $conn->query("SELECT c.id, c.product_id, c.quantity, p.name, p.price, 
             <img src="img/icon.png" alt="icon" class="navItem" id="icon">
             <h2 class="navItem" id="brand">ALTERNATE</h2>
         </a>
-        <h2 class="navItem"><a href="" class="navLink">HARDWARE</a></h2>
         <h2 class="navItem"><a href="pages/gadgets.html" class="navLink">GADGETS</a></h2>
-        <h2 class="navItem"><a href="#" class="navLink">OTHERS</a></h2>
+        <h2 class="navItem"><a href="pages/others.html" class="navLink">OTHERS</a></h2>
         <h2 class="navItem"><a href="cart_view.php" class="navLink">CART</a></h2>
+        <h2 class="navItem"><a href="admin.php" class="navLink">ADMIN</a></h2>
         <button id="themeToggle" class="navItem">☀️</button>
     </nav>
 
     <div class="mainContent">
         <h1 class="title2">Your Cart</h1>
-        <div class="products">
-            <?php if ($result->num_rows > 0): ?>
-                <?php while ($row = $result->fetch_assoc()): ?>
+        <?php if (empty($cart_items)): ?>
+            <p class="subtitle2">Your cart is empty.</p>
+        <?php else: ?>
+            <div class="products">
+                <?php foreach ($cart_items as $item): ?>
                     <div class="productElement">
-                        <img src="<?php echo htmlspecialchars($row['image_url'] ?: ''); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>" class="productImage">
-                        <h2 class="productTitle"><?php echo htmlspecialchars($row['name']); ?></h2>
-                        <p class="productDescription">Quantity: <?php echo $row['quantity']; ?></p>
-                        <p class="productPrice">Price: $<?php echo number_format($row['price'], 2); ?></p>
-                        <p class="productPrice">Total: $<?php echo number_format($row['price'] * $row['quantity'], 2); ?></p>
-                        <form class="removeForm" data-cart-id="<?php echo $row['id']; ?>">
-                            <input type="hidden" name="cart_id" value="<?php echo $row['id']; ?>">
+                        <img src="<?php echo htmlspecialchars($item['image_url'] ?: 'img/placeholder.jpg'); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="productImage">
+                        <h2 class="productTitle"><?php echo htmlspecialchars($item['name']); ?></h2>
+                        <p class="productDescription">Quantity: <?php echo $item['quantity']; ?></p>
+                        <p class="productPrice">Price: $<?php echo number_format($item['price'], 2); ?></p>
+                        <p class="productPrice">Total: $<?php echo number_format($item['subtotal'], 2); ?></p>
+                        <form class="removeForm" method="post" action="remove_from_cart.php">
+                            <input type="hidden" name="cart_id" value="<?php echo $item['id']; ?>">
                             <input type="submit" value="Remove" class="buyButton removeButton">
                         </form>
                     </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <p class="subtitle2">Your cart is empty.</p>
-            <?php endif; ?>
-        </div>
-        <?php if ($result->num_rows > 0): ?>
-            <form id="checkoutForm" class="checkoutForm">
+                <?php endforeach; ?>
+            </div>
+            <p class="subtitle2">Total Price: $<?php echo number_format($total_price, 2); ?></p>
+            <form id="checkoutForm" class="checkoutForm" method="post" action="checkout.php">
                 <input type="submit" value="Checkout" class="buyButton checkoutButton">
             </form>
         <?php endif; ?>
     </div>
 
-    <div class="toast" id="toast" style="display: none;"></div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-    // Theme toggle
-    const toggleButton = document.getElementById("themeToggle");
-    const body = document.body;
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-        body.classList.add("light-mode");
-        toggleButton.textContent = "🌙";
-    }
-    toggleButton?.addEventListener("click", () => {
-        const isLight = body.classList.toggle("light-mode");
-        toggleButton.textContent = isLight ? "🌙" : "☀️";
-        localStorage.setItem("theme", isLight ? "light" : "dark");
-    });
-
-    // Handle remove from cart
-    const removeForms = document.querySelectorAll(".removeForm");
-    removeForms.forEach(form => {
-        form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            const formData = new FormData(form);
-            try {
-                const response = await fetch("remove_from_cart.php", {
-                    method: "POST",
-                    body: formData
-                });
-                if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
-                const result = await response.json();
-                if (result.success) {
-                    showToast("Item removed from cart!");
-                    form.closest(".productElement").remove();
-                    if (!document.querySelector(".productElement")) {
-                        document.querySelector(".products").innerHTML = '<p class="subtitle2">Your cart is empty.</p>';
-                        document.querySelector(".checkoutForm").style.display = "none";
-                    }
-                } else {
-                    showToast("Error: " + result.message);
-                }
-            } catch (error) {
-                showToast("Error removing item: " + error.message);
-            }
-        });
-    });
-
-    // Handle checkout
-    const checkoutForm = document.getElementById("checkoutForm");
-    checkoutForm?.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        try {
-            const response = await fetch("checkout.php", {
-                method: "POST"
-            });
-            if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
-            const result = await response.json();
-            if (result.success) {
-                showToast("Checkout successful! Your cart has been cleared.");
-                document.querySelector(".products").innerHTML = '<p class="subtitle2">Your cart is empty.</p>';
-                checkoutForm.style.display = "none";
-            } else {
-                showToast("Error: " + result.message);
-            }
-        } catch (error) {
-            showToast("Error during checkout: " + error.message);
-        }
-    });
-
-    // Toast notification
-    function showToast(message) {
-        const toast = document.getElementById("toast");
-        toast.textContent = message;
-        toast.style.display = "block";
-        setTimeout(() => {
-            toast.style.display = "none";
-        }, 3000);
-    }
-});
-</script>
+    <footer class="footer">
+        <p>&copy; 2025 ALTERNATE</p>
+        <div class="footerContent">
+            <p class="footerHeader">About Us</p>
+            <p class="footerText">Your trusted source for high-quality gaming peripherals and electronics.</p>
+        </div>
+        <div class="footerContent">
+            <p class="footerHeader">Contact Us</p>
+            <p class="footerText">Email: support@alternate.com</p>
+        </div>
+    </footer>
+    <script src="app.js"></script>
 </body>
 </html>
-<?php $conn->close(); ?>
