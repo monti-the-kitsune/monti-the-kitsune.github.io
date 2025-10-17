@@ -232,7 +232,6 @@ body {
 
 .productImage {
     background: radial-gradient(circle, rgba(190, 0, 0, 0.2) 20%, transparent 70%);
-    border-radius: 50%;
     width: 25vw;
 }
 
@@ -253,7 +252,8 @@ body {
 }
 
 .productDescription {
-    font-size: 1.5em;
+    font-size: 1em;
+    min-height: 20vh;
     font-family: "Inconsolata", monospace;
     color: var(--text-color);
     margin: 0;
